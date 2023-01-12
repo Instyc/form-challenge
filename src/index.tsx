@@ -32,6 +32,12 @@ const theme = createTheme(
   coreEsES
 );
 
+theme.typography.h3 = {
+  "@media (min-width:600px)": {
+    fontSize: "1.2rem",
+  },
+};
+
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>

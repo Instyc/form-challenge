@@ -131,17 +131,19 @@ export const Form = () => {
         await setDoc(doc(formsRef, formData.email), formData);
         setAlert({
           msg: (
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Typography>
-                ¡Cuestionario enviado! Accede a todas las respuestas&nbsp;
-              </Typography>
+            <Typography>
+              ¡Cuestionario enviado! Accede a todas las respuestas&nbsp;
               <Link
                 onClick={() => navigate("/respuestas")}
-                sx={{ cursor: "pointer", fontSize: "1rem", lineHeight: "1.5" }}
+                sx={{
+                  cursor: "pointer",
+                  fontSize: "1rem",
+                  lineHeight: "1.5",
+                }}
               >
                 aquí
               </Link>
-            </Box>
+            </Typography>
           ),
           color: "success",
         });
