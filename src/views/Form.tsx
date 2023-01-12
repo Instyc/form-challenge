@@ -17,7 +17,7 @@ import {
   FormHelperText,
   Tooltip,
   IconButton,
-  Link
+  Link,
 } from "@mui/material";
 import { Assignment, ContentPasteSearch } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
@@ -28,6 +28,7 @@ import { Dayjs } from "dayjs";
 import "firebase/firestore";
 import { setDoc, doc } from "firebase/firestore";
 import { formsRef } from "../database/firebaseConfig";
+import { Footer } from "./Footer";
 
 type dataType = {
   full_name: string;
@@ -159,10 +160,15 @@ export const Form = () => {
     <Container>
       <Tooltip title="Ver respuestas">
         <IconButton
-          sx={{ position: "absolute", top: 0, left: 0, color: "black" }}
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            color: "black",
+          }}
           onClick={() => navigate("/respuestas")}
         >
-          <ContentPasteSearch />
+          <ContentPasteSearch fontSize="large" />
         </IconButton>
       </Tooltip>
       <Paper elevation={4} sx={{ p: 3 }}>

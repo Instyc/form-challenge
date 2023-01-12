@@ -50,7 +50,7 @@ export const Answers = () => {
           sx={{ position: "absolute", top: 0, left: 0, color: "black" }}
           onClick={() => navigate("/")}
         >
-          <ArrowBack />
+          <ArrowBack fontSize="large" />
         </IconButton>
       </Tooltip>
       <Paper elevation={4} sx={{ p: 3 }}>

@@ -1,14 +1,15 @@
-import { Backdrop, CircularProgress } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { FirebaseAppProvider } from "reactfire";
 import { firebaseConfig } from "./database/firebaseConfig";
 import "./index.css";
+import { Backdrop, CircularProgress } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { esES as coreEsES } from "@mui/material/locale";
+import { esES } from "@mui/x-date-pickers";
 import reportWebVitals from "./reportWebVitals";
 import { AppRouter } from "./routers/AppRouter";
-import { esES } from "@mui/x-date-pickers";
-import { esES as coreEsES } from "@mui/material/locale";
+import { Footer } from "./views/Footer";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -43,6 +44,7 @@ root.render(
           }
         >
           <AppRouter />
+          <Footer />
         </Suspense>
       </FirebaseAppProvider>
     </ThemeProvider>

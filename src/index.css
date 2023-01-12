@@ -18,7 +18,8 @@ code {
 #root {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   background: rgb(85, 146, 216);
   background: linear-gradient(
     17deg,
