@@ -19,6 +19,12 @@ code {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  background: rgb(85, 146, 216);
+  background: linear-gradient(
+    17deg,
+    rgba(85, 146, 216, 1) 26%,
+    rgba(65, 113, 167, 1) 100%
+  );
 }
 
 /* width */

@@ -39,7 +39,6 @@ export const Answers = () => {
 
   useEffect(() => {
     getData().then((cuestionaries) => {
-      console.log(cuestionaries);
       setCuestionaries(cuestionaries);
     });
   }, []);
@@ -48,7 +47,7 @@ export const Answers = () => {
     <Container>
       <Tooltip title="Ir al inicio">
         <IconButton
-          sx={{ position: "absolute", top: 0, left: 0 }}
+          sx={{ position: "absolute", top: 0, left: 0, color: "black" }}
           onClick={() => navigate("/")}
         >
           <ArrowBack />

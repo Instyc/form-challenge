@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { items } from "../database/db.json";
 import {
   Box,
@@ -14,17 +15,19 @@ import {
   Paper,
   Alert,
   FormHelperText,
+  Tooltip,
+  IconButton,
+  Link
 } from "@mui/material";
+import { Assignment, ContentPasteSearch } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Dayjs } from "dayjs";
-import { LoadingButton } from "@mui/lab";
 import "firebase/firestore";
 import { setDoc, doc } from "firebase/firestore";
-import Link from "@mui/material/Link";
 import { formsRef } from "../database/firebaseConfig";
-import { useNavigate } from "react-router-dom";
 
 type dataType = {
   full_name: string;
@@ -127,17 +130,17 @@ export const Form = () => {
         await setDoc(doc(formsRef, formData.email), formData);
         setAlert({
           msg: (
-            <>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography>
-                ¡Cuestionario enviado! Accede a todas las respuestas
+                ¡Cuestionario enviado! Accede a todas las respuestas&nbsp;
               </Typography>
               <Link
                 onClick={() => navigate("/respuestas")}
-                sx={{ cursor: "pointer" }}
+                sx={{ cursor: "pointer", fontSize: "1rem", lineHeight: "1.5" }}
               >
                 aquí
               </Link>
-            </>
+            </Box>
           ),
           color: "success",
         });
@@ -152,16 +155,23 @@ export const Form = () => {
     setLoading(false);
   }
 
-  useEffect(() => {
-    console.log(formData.terms_and_conditions);
-  }, [formData]);
-
   return (
     <Container>
+      <Tooltip title="Ver respuestas">
+        <IconButton
+          sx={{ position: "absolute", top: 0, left: 0, color: "black" }}
+          onClick={() => navigate("/respuestas")}
+        >
+          <ContentPasteSearch />
+        </IconButton>
+      </Tooltip>
       <Paper elevation={4} sx={{ p: 3 }}>
-        <Typography variant="h3" fontFamily="Montserrat" paddingBottom={2}>
-          Cuestionario
-        </Typography>
+        <Box sx={{ display: "flex", pb: 2, alignItems: "center", gap: 2 }}>
+          <Assignment sx={{ fontSize: "2.6rem" }} />
+          <Typography variant="h3" fontFamily="Montserrat">
+            Cuestionario
+          </Typography>
+        </Box>
         <Box
           component="form"
           sx={{ display: "flex", flexDirection: "column", gap: 2 }}
@@ -242,6 +252,7 @@ export const Form = () => {
                         <TextField
                           error={errors[item.name as keyof errorsType] !== ""}
                           helperText={errors[item.name as keyof errorsType]}
+                          required={item.required}
                           {...params}
                         />
                       )}
